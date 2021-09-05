@@ -2,8 +2,22 @@ import React from 'react';
 import styled from 'styled-components'
 import { DateTime } from 'luxon'
 
+interface DaysProps {
+  selected?: boolean,
+  outOfMont?: boolean
+}
+
+export type DayArguments = { day: number, ts: number, date: Date, prevMonth: boolean, nextMonth: boolean }
+
+export interface MonthDaysProps {
+  selected?: Date,
+  month?: Date,
+  onChange?: (arg: DayArguments) => void,
+}
+
 const Wrapper = styled.div`
   width: 100%;
+  box-sizing: border-box;
   border: solid 1px;
 `
 
@@ -11,26 +25,30 @@ const Row = styled.div`
   display: flex;
 `
 
-const Day = styled.div`
+const Day = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
   flex: 1;
   height: 30px;
-  border: solid;
   box-sizing: border-box;
+  border-radius: 6px;
+  opacity: ${({ outOfMont }: DaysProps) => outOfMont ? '0.5' : '1' };
+  background: ${({ selected }: DaysProps) => selected ? '#eee' : 'none' };
 `
 
 const defaultDate = new Date()
 
-interface MonthDaysProps {
-  date: Date
-}
-
 export const MonthDays = ({
-  date = defaultDate
+  selected = defaultDate,
+  month,
+  onChange = undefined
 }: MonthDaysProps) => {
-  const luxonDate = DateTime.fromJSDate(date).startOf('day')
+  const luxonDate = DateTime.fromJSDate(month || selected).startOf('day')
+  const luxonSelectedDate = DateTime.fromJSDate(selected).startOf('day')
   const firstDayOfMonth = luxonDate.set({ day: 1 })
   const lastDayOfMonth = luxonDate.set({ day: firstDayOfMonth.daysInMonth })
   
@@ -44,21 +62,39 @@ export const MonthDays = ({
     while(i < fillMonthBeforeWith) {
       const diff = fillMonthBeforeWith - i
       const date = firstDayOfMonth.minus({ days: diff })
-      daysArray.push(<Day key={date.toFormat('x')}>{date.day}</Day>)
+      daysArray.push({ 
+        ts: date.toFormat('x'), 
+        day: date.day, 
+        date: date.toJSDate(), 
+        prevMonth: true, 
+        nextMonth: false 
+      })
       i += 1
     }
     
     i = 0
     while(i < totalDaysInMonth) {
       const date = firstDayOfMonth.plus({ days: i })
-      daysArray.push(<Day key={date.toFormat('x')}>{date.day}</Day>)
+      daysArray.push({ 
+        ts: date.toFormat('x'), 
+        day: date.day, 
+        date: date.toJSDate(),
+        prevMonth: false, 
+        nextMonth: false 
+      })
       i += 1
     }
 
     i = 1
     while(i <= fillMonthAfterWith) {
       const date = lastDayOfMonth.plus({ days: i })
-      daysArray.push(<Day key={date.toFormat('x')}>{date.day}</Day>)
+      daysArray.push({ 
+        ts: date.toFormat('x'), 
+        day: date.day, 
+        date: date.toJSDate(),
+        prevMonth: false, 
+        nextMonth: true 
+      })
       i += 1
     }
 
@@ -86,13 +122,27 @@ export const MonthDays = ({
   const daysToRender = renderDays()
   const rows = daysInRows({ daysToRender })
 
+  const handleDayClick = function (this: DayArguments) {
+    onChange?.(this)
+  }
+
   return (
     <Wrapper>
-      {Object.values(rows).map(row => 
-        <Row>
-          {row.map((day) => day)}
+      {Object.keys(rows).map((key: any) => {
+        const row = rows[key]
+        return <Row key={key}>
+          {row.map((day: DayArguments) => 
+            <Day 
+              key={day.ts} 
+              selected={luxonSelectedDate.toMillis() === DateTime.fromJSDate(day.date).startOf('day').toMillis()}
+              outOfMont={day.prevMonth || day.nextMonth}
+              onClick={handleDayClick.bind(day)}
+            >
+              {day.day}
+            </Day>
+          )}
         </Row>
-      )}
+      })}
     </Wrapper>
   );
 };
