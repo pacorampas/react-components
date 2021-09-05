@@ -13,6 +13,7 @@ export type DayArguments = { day: number, ts: number, date: Date, prevMonth: boo
 export interface MonthDaysProps {
   selected?: Date,
   month?: Date,
+  fillEmptyDays?: boolean, 
   onChange?: (arg: DayArguments) => void,
 }
 
@@ -48,6 +49,7 @@ const defaultDate = new Date()
 export const MonthDays = ({
   selected = defaultDate,
   month,
+  fillEmptyDays = false,
   onChange = undefined
 }: MonthDaysProps) => {
   const luxonDate = DateTime.fromJSDate(month || selected).startOf('day')
@@ -70,7 +72,7 @@ export const MonthDays = ({
         day: date.day, 
         date: date.toJSDate(), 
         prevMonth: true, 
-        nextMonth: false 
+        nextMonth: false
       })
       i += 1
     }
@@ -128,22 +130,33 @@ export const MonthDays = ({
   const handleDayClick = function (this: DayArguments) {
     onChange?.(this)
   }
-
+  
   return (
     <Wrapper>
       {Object.keys(rows).map((key: any) => {
         const row = rows[key]
         return <Row key={key}>
-          {row.map((day: DayArguments) => 
-            <Day 
-              key={day.ts} 
-              selected={luxonSelectedDate.toMillis() === DateTime.fromJSDate(day.date).startOf('day').toMillis()}
-              outOfMont={day.prevMonth || day.nextMonth}
-              onClick={handleDayClick.bind(day)}
-            >
-              {day.day}
-            </Day>
-          )}
+          {row.map((day: DayArguments) => {
+            const isOutDay = day.prevMonth || day.nextMonth
+
+            if (!fillEmptyDays && isOutDay) {
+              return <Day 
+                key={day.ts} 
+                disabled
+              />
+            }
+
+            return (
+              <Day 
+                key={day.ts} 
+                selected={luxonSelectedDate.toMillis() === DateTime.fromJSDate(day.date).startOf('day').toMillis()}
+                outOfMont={day.prevMonth || day.nextMonth}
+                onClick={handleDayClick.bind(day)}
+              >
+                {day.day}
+              </Day>
+            )
+          })}
         </Row>
       })}
     </Wrapper>

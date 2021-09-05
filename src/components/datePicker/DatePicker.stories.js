@@ -6,4 +6,4 @@ export default {
   component: DatePicker,
 };
 
-export const DatePickerMain = () => <DatePicker onChange={(d) => console.log(d)} />;
+export const DatePickerMain = () => <DatePicker fillEmptyDays onChange={(d) => console.log(d)} />;

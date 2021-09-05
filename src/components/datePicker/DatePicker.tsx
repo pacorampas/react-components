@@ -45,7 +45,8 @@ const MonthTitle = styled.div`
  */
 export const DatePicker = ({
   date = defaultDate,
-  onChange
+  onChange,
+  ...rest
 }: DatePickerProps) => {
   const [luxonSelectedDay, setLuxonSelectedDay] = useState(DateTime.fromJSDate(date).startOf('day'))
   const [luxonSelectedMonth, setLuxonSelectedMonth] = useState(DateTime.fromJSDate(date).startOf('day'))
@@ -75,7 +76,8 @@ export const DatePicker = ({
       <MonthDays 
         month={luxonSelectedMonth.toJSDate()}
         selected={luxonSelectedDay.toJSDate()} 
-        onChange={hanldeChange} 
+        onChange={hanldeChange}
+        {...rest}
       />
     </Wrapper>
   );
