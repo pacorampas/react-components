@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components'
 import { DateTime } from 'luxon'
 
-interface DaysProps {
+interface DayProps {
   selected?: boolean,
-  outOfMont?: boolean
+  outOfMont?: boolean,
+  tabIndex: string | number
 }
 
 export type DayArguments = { day: number, ts: number, date: Date, prevMonth: boolean, nextMonth: boolean }
@@ -25,7 +26,9 @@ const Row = styled.div`
   display: flex;
 `
 
-const Day = styled.button`
+const Day = styled.button.attrs(({ tabIndex = -1 }: DayProps) => {
+  return { tabIndex }
+})`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,8 +39,8 @@ const Day = styled.button`
   height: 30px;
   box-sizing: border-box;
   border-radius: 6px;
-  opacity: ${({ outOfMont }: DaysProps) => outOfMont ? '0.5' : '1' };
-  background: ${({ selected }: DaysProps) => selected ? '#eee' : 'none' };
+  opacity: ${({ outOfMont }: DayProps) => outOfMont ? '0.5' : '1' };
+  background: ${({ selected }: DayProps) => selected ? '#eee' : 'none' };
 `
 
 const defaultDate = new Date()
