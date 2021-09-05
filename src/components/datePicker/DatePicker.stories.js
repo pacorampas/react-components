@@ -1,9 +1,32 @@
 import React from "react";
-import { DatePicker } from "./DatePicker";
+import { DatePicker as DatePickerComponent } from "./DatePicker";
 
 export default {
   title: "Components/DatePicker",
-  component: DatePicker,
+  component: DatePickerComponent,
+  parameters: {
+    backgrounds: {
+      values: [
+        { name: 'red', value: '#f00' },
+        { name: 'green', value: '#0f0' },
+        { name: 'blue', value: '#00f' },
+      ],
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ margin: '100px' }}>
+        <Story />
+      </div>
+    ),
+  ],
 };
 
-export const DatePickerMain = () => <DatePicker fillEmptyDays onChange={(d) => console.log(d)} />;
+const Template = (args) => <DatePickerComponent {...args} />
+
+export const DatePicker = Template.bind({});
+
+DatePicker.args = {
+  fillEmptyDays: true,
+}
+
