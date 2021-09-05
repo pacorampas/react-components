@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { DateTime } from 'luxon'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { MonthDays, DayArguments } from './MothDays';
 
 interface DatePickerProps {
