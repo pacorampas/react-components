@@ -5,12 +5,14 @@
   "module": "lib/index.esm.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
+  "homepage": "https://pacorampas.github.io/react-components/",
   "scripts": {
     "build": "rollup -c",
     "start": "yarn storybook",
     "storybook": "start-storybook -p 6006",
     "prebuild:storybook": "yarn test",
-    "build:storybook": "build-storybook",
+    "build:storybook": "yarn build-storybook",
+    "deploy:storybook": "yarn build:storybook && gh-pages -d storybook-static",
     "test": "jest --json --outputFile=.jest-test-results.json",
     "test:watch": "jest --watch"
   },
@@ -29,6 +31,7 @@
     "@types/jest": "^27.0.1",
     "@types/react": "^17.0.17",
     "babel-loader": "^8.2.2",
+    "gh-pages": "^3.2.3",
     "jest": "^27.1.0",
     "postcss": "^8.3.6",
     "react": "^17.0.2",
