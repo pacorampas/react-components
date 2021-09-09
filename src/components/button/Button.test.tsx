@@ -5,7 +5,7 @@ import { Button } from './Button'
 
 describe('<Button />', () => {
   test('should print label text', async () => {
-    const { getByRole } = render(<Button label="Call to action" />)
+    const { getByRole } = render(<Button>Call to action</Button>)
 
     const button = getByRole('button')
 

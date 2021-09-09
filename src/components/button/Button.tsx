@@ -1,42 +1,53 @@
 import React from 'react'
-// import "./Button.css";
+import styled, { css } from 'styled-components'
+import { defaultTheme, themeType } from '../../theme'
 
-interface ButtonProps {
+export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  primary?: boolean
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large'
+  variant: string
   /**
    * Button contents
    */
-  label: string
+  children: JSX.Element | string
   /**
    * Optional click handler
    */
   onClick?: () => void
+  theme: themeType
 }
+
+const Wrapper = styled.button`
+  outline: 0;
+  border: solid 2px transparent;
+  color: white;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus {
+    border-color: ${({ theme }: ButtonProps) => theme.focus.color.main};
+  }
+
+  ${({ theme, variant }: ButtonProps) => css`
+    background: ${theme.colors[variant].main};
+    color: ${theme.colors[variant].contrast};
+    ${theme?.components?.button?.overrides}
+  `};
+`
 
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary = false, size = 'medium', backgroundColor, label, ...props }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary'
+export const Button = ({ variant = 'primary', theme = defaultTheme, children, onClick, ...rest }: ButtonProps) => {
   return (
-    <button
-      type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
-      {...props}
-    >
-      {label}
-    </button>
+    <Wrapper {...{ variant, theme, onClick }} {...rest}>
+      {children}
+    </Wrapper>
   )
 }
