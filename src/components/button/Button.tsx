@@ -6,7 +6,8 @@ export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  variant: string
+  variant?: string
+  theme?: themeType
   /**
    * Button contents
    */
@@ -15,7 +16,11 @@ export interface ButtonProps {
    * Optional click handler
    */
   onClick?: () => void
-  theme: themeType
+}
+
+const defaultProps = {
+  variant: 'primary',
+  theme: defaultTheme,
 }
 
 const Wrapper = styled.button`
@@ -31,10 +36,10 @@ const Wrapper = styled.button`
   }
 
   &:focus {
-    border-color: ${({ theme }: ButtonProps) => theme.focus.color.main};
+    border-color: ${({ theme = defaultProps.theme }: ButtonProps) => theme.focus.color.main};
   }
 
-  ${({ theme, variant }: ButtonProps) => css`
+  ${({ theme = defaultProps.theme, variant = defaultProps.variant }: ButtonProps) => css`
     background: ${theme.colors[variant].main};
     color: ${theme.colors[variant].contrast};
     ${theme?.components?.button?.overrides}
@@ -44,7 +49,13 @@ const Wrapper = styled.button`
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ variant = 'primary', theme = defaultTheme, children, onClick, ...rest }: ButtonProps) => {
+export const Button = ({
+  variant = defaultProps.variant,
+  theme = defaultProps.theme,
+  children,
+  onClick,
+  ...rest
+}: ButtonProps) => {
   return (
     <Wrapper {...{ variant, theme, onClick }} {...rest}>
       {children}
