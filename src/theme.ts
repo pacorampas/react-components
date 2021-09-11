@@ -1,3 +1,10 @@
+export enum VARIANT {
+  PRIMARY = 'primary',
+  NEGATIVE = 'negative',
+  POSITIVE = 'positive',
+  WARNING = 'warning',
+  INFO = 'info',
+}
 export type colorType = {
   main: string
   contrast: string
@@ -17,23 +24,23 @@ export type themeType = {
 
 export const defaultTheme: themeType = {
   colors: {
-    primary: {
+    [VARIANT.PRIMARY]: {
       main: 'pink',
       contrast: 'black',
     },
-    negative: {
+    [VARIANT.NEGATIVE]: {
       main: 'red',
       contrast: 'white',
     },
-    positive: {
+    [VARIANT.POSITIVE]: {
       main: 'green',
       contrast: 'white',
     },
-    warning: {
+    [VARIANT.WARNING]: {
       main: 'orange',
       contrast: 'white',
     },
-    info: {
+    [VARIANT.INFO]: {
       main: 'blue',
       contrast: 'white',
     },

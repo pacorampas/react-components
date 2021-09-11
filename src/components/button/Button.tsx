@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { defaultTheme, themeType } from '../../theme'
+import { defaultTheme, themeType, VARIANT } from '../../theme'
 
 export interface ButtonProps {
   /**
@@ -19,7 +19,7 @@ export interface ButtonProps {
 }
 
 const defaultProps = {
-  variant: 'primary',
+  variant: VARIANT.PRIMARY,
   theme: defaultTheme,
 }
 
