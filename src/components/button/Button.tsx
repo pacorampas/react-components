@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { defaultTheme, themeType, VARIANT } from '../../theme'
 import { IncreaseAnim, ANIM_STATUS } from '../increaseAnim/IncreaseAnim'
+import chroma from 'chroma-js'
 
 export interface ButtonProps {
   /**
    * Is this the principal call to action on the page?
    */
-  variant?: string
+  variant?: VARIANT
   theme?: themeType
   /**
    * Button contents
@@ -33,15 +34,35 @@ const Wrapper = styled.button`
   padding: 8px 12px;
   cursor: pointer;
 
-  &:hover {
-    opacity: 0.8;
-  }
+  ${({ theme = defaultProps.theme, variant = defaultProps.variant }: ButtonProps) => {
+    const main = theme.colors[variant].main
+    const contrast = theme.colors[variant].contrast
+    const mainBrighten = chroma(main).brighten(0.4).hex()
+    const mainBrightest = chroma(main).brighten(0.6).hex()
+    const mainDarken = chroma(main).darken(0.5).hex()
 
-  ${({ theme = defaultProps.theme, variant = defaultProps.variant }: ButtonProps) => css`
-    background: ${theme.colors[variant].main};
-    color: ${theme.colors[variant].contrast};
-    ${theme?.components?.button?.overrides}
-  `};
+    return css`
+      background: ${main};
+      color: ${contrast};
+      border-color: ${main};
+
+      &:hover {
+        background: ${mainBrighten};
+        border-color: ${mainBrighten};
+      }
+
+      &:active {
+        background: ${mainBrightest};
+        border-color: ${mainBrightest};
+      }
+
+      &:focus {
+        border-color: ${mainDarken};
+      }
+
+      ${theme?.components?.button?.overrides}
+    `
+  }};
 `
 
 const Label = styled.span`

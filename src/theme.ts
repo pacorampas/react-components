@@ -18,7 +18,6 @@ export type themeType = {
   colors: {
     [key: string]: colorType
   }
-  focus: focusType
   components?: any
 }
 
