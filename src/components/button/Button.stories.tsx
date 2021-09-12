@@ -20,5 +20,6 @@ const Template = (args: ButtonProps) => <ButtonComponent {...args} />
 export const Button: Story<ButtonProps> = Template.bind({})
 Button.args = {
   children: 'Click me!',
+  bordered: false,
   variant: VARIANT.PRIMARY,
 }

@@ -9,6 +9,10 @@ export interface ButtonProps {
    * Is this the principal call to action on the page?
    */
   variant?: VARIANT
+  /**
+   * Use a button without background
+   */
+  bordered?: boolean
   theme?: themeType
   /**
    * Button contents
@@ -22,6 +26,7 @@ export interface ButtonProps {
 
 const defaultProps = {
   variant: VARIANT.PRIMARY,
+  bordered: false,
   theme: defaultTheme,
 }
 
@@ -29,12 +34,11 @@ const Wrapper = styled.button`
   position: relative;
   outline: 0;
   border: solid 2px transparent;
-  color: white;
   border-radius: 4px;
   padding: 8px 12px;
   cursor: pointer;
 
-  ${({ theme = defaultProps.theme, variant = defaultProps.variant }: ButtonProps) => {
+  ${({ theme = defaultProps.theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps) => {
     const main = theme.colors[variant].main
     const contrast = theme.colors[variant].contrast
     const mainBrighten = chroma(main).brighten(0.4).hex()
@@ -42,18 +46,20 @@ const Wrapper = styled.button`
     const mainDarken = chroma(main).darken(0.5).hex()
 
     return css`
-      background: ${main};
-      color: ${contrast};
+      background: ${bordered ? 'transparent' : main};
+      color: ${bordered ? main : contrast};
       border-color: ${main};
 
       &:hover {
-        background: ${mainBrighten};
+        background: ${bordered ? 'transparent' : mainBrighten};
         border-color: ${mainBrighten};
+        color: ${bordered ? mainBrighten : contrast};
       }
 
       &:active {
-        background: ${mainBrightest};
+        background: ${bordered ? 'transparent' : mainBrightest};
         border-color: ${mainBrightest};
+        color: ${bordered ? mainBrightest : contrast};
       }
 
       &:focus {
