@@ -45,11 +45,5 @@ export const defaultTheme: themeType = {
       contrast: 'white',
     },
   },
-  focus: {
-    color: {
-      main: 'red',
-      contrast: 'white',
-    },
-  },
   components: {},
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import c from 'classnames'
 import { defaultTheme, themeType, VARIANT } from '../../theme'
@@ -17,6 +17,10 @@ export interface IncreaseAnimProps {
   theme?: themeType
   status?: ANIM_STATUS
   /**
+   * Number of px to animation increase (width and height)
+   */
+  increase?: number
+  /**
    * Use it to handle animation start
    */
   onPlay?: ({ status }: { status: ANIM_STATUS }) => void
@@ -29,27 +33,38 @@ export interface IncreaseAnimProps {
 const defaultProps = {
   variant: VARIANT.PRIMARY,
   theme: defaultTheme,
+  increase: 20,
 }
 
-const borderOutAnimation = keyframes`
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(1.2); opacity: 0; }
-`
+const borderOutAnimation = ({ increaseWidth = defaultProps.increase, increaseHeight = defaultProps.increase }) => {
+  return keyframes`
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: ${`scale(${increaseWidth}, ${increaseHeight})`}; opacity: 0; }
+  `
+}
 
 const Animatable = styled.div`
-  display: none;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   opacity: 0;
-  animation-name: ${borderOutAnimation};
+
+  animation-name: none;
   animation-duration: 0.3s;
   animation-iteration-count: 1;
 
-  &.show {
-    display: block;
+  &.running {
+    ${({
+      increaseWidth = defaultProps.increase,
+      increaseHeight = defaultProps.increase,
+    }: IncreaseAnimProps & {
+      increaseWidth: number
+      increaseHeight: number
+    }) => css`
+      animation-name: ${borderOutAnimation({ increaseWidth, increaseHeight })};
+    `};
   }
 
   ${({ theme = defaultProps.theme, variant = defaultProps.variant }: IncreaseAnimProps) => css`
@@ -67,13 +82,14 @@ export const IncreaseAnim = ({
   variant = defaultProps.variant,
   theme = defaultProps.theme,
   status = ANIM_STATUS.PLAY,
+  increase = defaultProps.increase,
   onPlay,
   onStop,
 }: IncreaseAnimProps) => {
   const animationRef = useRef<HTMLDivElement>(null)
   const [statusInternal, setStatusInternal] = useState<ANIM_STATUS>()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const endAnimation = () => {
       setStatusInternal(ANIM_STATUS.STOP)
       onStop?.({ status: ANIM_STATUS.STOP })
@@ -86,12 +102,27 @@ export const IncreaseAnim = ({
 
   useEffect(() => {
     setStatusInternal(status)
+
     if (status === ANIM_STATUS.PLAY) {
       onPlay?.({ status: ANIM_STATUS.PLAY })
     }
   }, [status])
 
-  const show = ANIM_STATUS.PLAY === statusInternal
+  let increaseWidth = 0
+  let increaseHeight = 0
+  if (animationRef?.current) {
+    increaseWidth = increase / animationRef?.current?.offsetWidth + 1
+    increaseHeight = increase / animationRef?.current?.offsetHeight + 1
+  }
 
-  return <Animatable ref={animationRef} className={c(className, show && 'show')} {...{ theme, variant }} />
+  const running = ANIM_STATUS.PLAY === statusInternal
+  console.log('running', running)
+
+  return (
+    <Animatable
+      ref={animationRef}
+      className={c(className, running && 'running')}
+      {...{ theme, variant, increaseWidth, increaseHeight }}
+    />
+  )
 }

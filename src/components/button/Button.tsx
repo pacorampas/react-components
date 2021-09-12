@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { defaultTheme, themeType, VARIANT } from '../../theme'
+import { IncreaseAnim, ANIM_STATUS } from '../increaseAnim/IncreaseAnim'
 
 export interface ButtonProps {
   /**
@@ -24,6 +25,7 @@ const defaultProps = {
 }
 
 const Wrapper = styled.button`
+  position: relative;
   outline: 0;
   border: solid 2px transparent;
   color: white;
@@ -35,15 +37,15 @@ const Wrapper = styled.button`
     opacity: 0.8;
   }
 
-  &:focus {
-    border-color: ${({ theme = defaultProps.theme }: ButtonProps) => theme.focus.color.main};
-  }
-
   ${({ theme = defaultProps.theme, variant = defaultProps.variant }: ButtonProps) => css`
     background: ${theme.colors[variant].main};
     color: ${theme.colors[variant].contrast};
     ${theme?.components?.button?.overrides}
   `};
+`
+
+const Label = styled.span`
+  position: relative;
 `
 
 /**
@@ -56,9 +58,31 @@ export const Button = ({
   onClick,
   ...rest
 }: ButtonProps) => {
+  const [anim, setAnim] = useState(false)
+
+  const handleClick = () => {
+    setAnim(true)
+    onClick?.()
+  }
+
+  const handleIncreaseAnimStop = () => {
+    setAnim(false)
+  }
+
   return (
-    <Wrapper {...{ variant, theme, onClick }} {...rest}>
-      {children}
+    <Wrapper {...{ variant, theme }} onClick={handleClick} {...rest}>
+      <>
+        {anim && (
+          <IncreaseAnim
+            {...{ theme }}
+            variant={variant as any as VARIANT}
+            status={ANIM_STATUS.PLAY}
+            increase={20}
+            onStop={handleIncreaseAnimStop}
+          />
+        )}
+        <Label>{children}</Label>
+      </>
     </Wrapper>
   )
 }
