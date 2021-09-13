@@ -1,14 +1,14 @@
 {
-  "numFailedTestSuites": 1,
+  "numFailedTestSuites": 0,
   "numFailedTests": 0,
-  "numPassedTestSuites": 1,
-  "numPassedTests": 1,
+  "numPassedTestSuites": 2,
+  "numPassedTests": 10,
   "numPendingTestSuites": 0,
   "numPendingTests": 0,
-  "numRuntimeErrorTestSuites": 1,
+  "numRuntimeErrorTestSuites": 0,
   "numTodoTests": 0,
   "numTotalTestSuites": 2,
-  "numTotalTests": 1,
+  "numTotalTests": 10,
   "openHandles": [],
   "snapshot": {
     "added": 0,
@@ -19,15 +19,15 @@
     "filesRemovedList": [],
     "filesUnmatched": 0,
     "filesUpdated": 0,
-    "matched": 0,
-    "total": 0,
+    "matched": 7,
+    "total": 7,
     "unchecked": 0,
     "uncheckedKeysByFile": [],
     "unmatched": 0,
     "updated": 0
   },
-  "startTime": 1631551050256,
-  "success": false,
+  "startTime": 1631553805534,
+  "success": true,
   "testResults": [
     {
       "assertionResults": [
@@ -40,21 +40,93 @@
           "title": "should change the month title"
         }
       ],
-      "endTime": 1631551062872,
+      "endTime": 1631553818410,
       "message": "",
       "name": "/Users/manu/Workspace/personal/react-components/src/components/datePicker/DatePicker.test.tsx",
-      "startTime": 1631551051858,
+      "startTime": 1631553806532,
       "status": "passed",
       "summary": ""
     },
     {
-      "assertionResults": [],
-      "coverage": {},
-      "endTime": 1631551063623,
-      "message": "  \u001b[1m● \u001b[22mTest suite failed to run\n\n    \u001b[96msrc/components/button/Button.tsx\u001b[0m:\u001b[93m5\u001b[0m:\u001b[93m20\u001b[0m - \u001b[91merror\u001b[0m\u001b[90m TS2307: \u001b[0mCannot find module 'chroma-js' or its corresponding type declarations.\n\n    \u001b[7m5\u001b[0m import chroma from 'chroma-js'\n    \u001b[7m \u001b[0m \u001b[91m                   ~~~~~~~~~~~\u001b[0m\n",
+      "assertionResults": [
+        {
+          "ancestorTitles": [],
+          "failureMessages": [],
+          "fullName": "renders correctly",
+          "location": null,
+          "status": "passed",
+          "title": "renders correctly"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render a bordered button",
+          "location": null,
+          "status": "passed",
+          "title": "should render a bordered button"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render a solid button",
+          "location": null,
+          "status": "passed",
+          "title": "should render a solid button"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render using primary",
+          "location": null,
+          "status": "passed",
+          "title": "should render using primary"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render using negative",
+          "location": null,
+          "status": "passed",
+          "title": "should render using negative"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render using positive",
+          "location": null,
+          "status": "passed",
+          "title": "should render using positive"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render using warning",
+          "location": null,
+          "status": "passed",
+          "title": "should render using warning"
+        },
+        {
+          "ancestorTitles": ["Button", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "Button with modifiers should render using info",
+          "location": null,
+          "status": "passed",
+          "title": "should render using info"
+        },
+        {
+          "ancestorTitles": ["Button", "with interaction"],
+          "failureMessages": [],
+          "fullName": "Button with interaction trigger onClick prop when user clicks on the button",
+          "location": null,
+          "status": "passed",
+          "title": "trigger onClick prop when user clicks on the button"
+        }
+      ],
+      "endTime": 1631553819152,
+      "message": "",
       "name": "/Users/manu/Workspace/personal/react-components/src/components/button/Button.test.tsx",
-      "startTime": 1631551063623,
-      "status": "failed",
+      "startTime": 1631553806528,
+      "status": "passed",
       "summary": ""
     }
   ],

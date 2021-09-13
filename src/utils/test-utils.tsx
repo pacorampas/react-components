@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import { themes } from '../../theme'
+import { themes } from '../theme'
 
 const AllTheProviders: FC = ({ children }) => {
   return <ThemeProvider theme={themes[0]}>{children}</ThemeProvider>
