@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button with modifiers should render a bordered button 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: transparent;
+  color: pink;
+  border-color: pink;
+}
+
+.c0:hover {
+  background: transparent;
+  border-color: #ffd4df;
+  color: #ffd4df;
+}
+
+.c0:active {
+  background: transparent;
+  border-color: #ffdee9;
+  color: #ffdee9;
+}
+
+.c0:focus {
+  border-color: #e5a7b2;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
+
+exports[`Button with modifiers should render a solid button 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: pink;
+  color: black;
+  border-color: pink;
+}
+
+.c0:hover {
+  background: #ffd4df;
+  border-color: #ffd4df;
+  color: black;
+}
+
+.c0:active {
+  background: #ffdee9;
+  border-color: #ffdee9;
+  color: black;
+}
+
+.c0:focus {
+  border-color: #e5a7b2;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
+
+exports[`Button with modifiers should render using info 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: blue;
+  color: white;
+  border-color: blue;
+}
+
+.c0:hover {
+  background: #4221ff;
+  border-color: #4221ff;
+  color: white;
+}
+
+.c0:active {
+  background: #542dff;
+  border-color: #542dff;
+  color: white;
+}
+
+.c0:focus {
+  border-color: #0000e4;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
+
+exports[`Button with modifiers should render using negative 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: red;
+  color: white;
+  border-color: red;
+}
+
+.c0:hover {
+  background: #ff3219;
+  border-color: #ff3219;
+  color: white;
+}
+
+.c0:active {
+  background: #ff4123;
+  border-color: #ff4123;
+  color: white;
+}
+
+.c0:focus {
+  border-color: #e00000;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
+
+exports[`Button with modifiers should render using positive 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: green;
+  color: white;
+  border-color: green;
+}
+
+.c0:hover {
+  background: #28931c;
+  border-color: #28931c;
+  color: white;
+}
+
+.c0:active {
+  background: #359d27;
+  border-color: #359d27;
+  color: white;
+}
+
+.c0:focus {
+  border-color: #006900;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
+
+exports[`Button with modifiers should render using primary 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: pink;
+  color: black;
+  border-color: pink;
+}
+
+.c0:hover {
+  background: #ffd4df;
+  border-color: #ffd4df;
+  color: black;
+}
+
+.c0:active {
+  background: #ffdee9;
+  border-color: #ffdee9;
+  color: black;
+}
+
+.c0:focus {
+  border-color: #e5a7b2;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
+
+exports[`Button with modifiers should render using warning 1`] = `
+.c0 {
+  position: relative;
+  outline: 0;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  cursor: pointer;
+  background: orange;
+  color: white;
+  border-color: orange;
+}
+
+.c0:hover {
+  background: #ffb827;
+  border-color: #ffb827;
+  color: white;
+}
+
+.c0:active {
+  background: #ffc233;
+  border-color: #ffc233;
+  color: white;
+}
+
+.c0:focus {
+  border-color: #e28d00;
+}
+
+.c1 {
+  position: relative;
+}
+
+<button
+  class="c0"
+>
+  <span
+    class="c1"
+  >
+    Call to action
+  </span>
+</button>
+`;
