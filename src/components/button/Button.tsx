@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
-import { defaultTheme, themeType, VARIANT } from '../../theme'
+import { themeProp, VARIANT } from '../../theme'
 import { IncreaseAnim, ANIM_STATUS } from '../increaseAnim/IncreaseAnim'
 import chroma from 'chroma-js'
 
@@ -13,7 +13,6 @@ export interface ButtonProps {
    * Use a button without background
    */
   bordered?: boolean
-  theme?: themeType
   /**
    * Button contents
    */
@@ -27,7 +26,6 @@ export interface ButtonProps {
 const defaultProps = {
   variant: VARIANT.PRIMARY,
   bordered: false,
-  theme: defaultTheme,
 }
 
 const Wrapper = styled.button`
@@ -38,7 +36,7 @@ const Wrapper = styled.button`
   padding: 8px 12px;
   cursor: pointer;
 
-  ${({ theme = defaultProps.theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps) => {
+  ${({ theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps & themeProp) => {
     const main = theme.colors[variant].main
     const contrast = theme.colors[variant].contrast
     const mainBrighten = chroma(main).brighten(0.4).hex()
@@ -78,13 +76,7 @@ const Label = styled.span`
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({
-  variant = defaultProps.variant,
-  theme = defaultProps.theme,
-  children,
-  onClick,
-  ...rest
-}: ButtonProps) => {
+export const Button = ({ variant = defaultProps.variant, children, onClick, ...rest }: ButtonProps) => {
   const [anim, setAnim] = useState(false)
 
   const handleClick = () => {
@@ -97,11 +89,10 @@ export const Button = ({
   }
 
   return (
-    <Wrapper {...{ variant, theme }} onClick={handleClick} {...rest}>
+    <Wrapper {...{ variant }} onClick={handleClick} {...rest}>
       <>
         {anim && (
           <IncreaseAnim
-            {...{ theme }}
             variant={variant as any as VARIANT}
             status={ANIM_STATUS.PLAY}
             increase={20}

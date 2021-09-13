@@ -22,4 +22,7 @@ Button.args = {
   children: 'Click me!',
   bordered: false,
   variant: VARIANT.PRIMARY,
+  onClick: () => {
+    console.log('Click!')
+  },
 }

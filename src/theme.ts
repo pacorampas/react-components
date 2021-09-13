@@ -15,13 +15,19 @@ export type focusType = {
 }
 
 export type themeType = {
+  name: string
   colors: {
     [key: string]: colorType
   }
   components?: any
 }
 
+export type themeProp = {
+  theme: themeType
+}
+
 export const defaultTheme: themeType = {
+  name: 'default',
   colors: {
     [VARIANT.PRIMARY]: {
       main: 'pink',
@@ -46,3 +52,32 @@ export const defaultTheme: themeType = {
   },
   components: {},
 }
+
+export const alternativeTheme: themeType = {
+  name: 'alternative',
+  colors: {
+    [VARIANT.PRIMARY]: {
+      main: 'orange',
+      contrast: 'black',
+    },
+    [VARIANT.NEGATIVE]: {
+      main: 'blue',
+      contrast: 'white',
+    },
+    [VARIANT.POSITIVE]: {
+      main: 'green',
+      contrast: 'white',
+    },
+    [VARIANT.WARNING]: {
+      main: 'orange',
+      contrast: 'white',
+    },
+    [VARIANT.INFO]: {
+      main: 'blue',
+      contrast: 'white',
+    },
+  },
+  components: {},
+}
+
+export const themes = [defaultTheme, alternativeTheme]

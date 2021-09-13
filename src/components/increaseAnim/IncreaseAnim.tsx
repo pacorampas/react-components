@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import c from 'classnames'
-import { defaultTheme, themeType, VARIANT } from '../../theme'
+import { themeProp, VARIANT } from '../../theme'
 
 export enum ANIM_STATUS {
   PLAY = 'play',
@@ -14,7 +14,6 @@ export interface IncreaseAnimProps {
    * Use it to change the UI colors
    */
   variant?: VARIANT
-  theme?: themeType
   status?: ANIM_STATUS
   /**
    * Number of px to animation increase (width and height)
@@ -32,7 +31,6 @@ export interface IncreaseAnimProps {
 
 const defaultProps = {
   variant: VARIANT.PRIMARY,
-  theme: defaultTheme,
   increase: 20,
 }
 
@@ -67,7 +65,7 @@ const Animatable = styled.div`
     `};
   }
 
-  ${({ theme = defaultProps.theme, variant = defaultProps.variant }: IncreaseAnimProps) => css`
+  ${({ theme, variant = defaultProps.variant }: IncreaseAnimProps & themeProp) => css`
     background: ${theme.colors[variant].main};
     ${theme?.components?.borderOutAnim?.overrides}
   `};
@@ -80,7 +78,6 @@ const Animatable = styled.div`
 export const IncreaseAnim = ({
   className,
   variant = defaultProps.variant,
-  theme = defaultProps.theme,
   status = ANIM_STATUS.PLAY,
   increase = defaultProps.increase,
   onPlay,
@@ -116,13 +113,12 @@ export const IncreaseAnim = ({
   }
 
   const running = ANIM_STATUS.PLAY === statusInternal
-  console.log('running', running)
 
   return (
     <Animatable
       ref={animationRef}
       className={c(className, running && 'running')}
-      {...{ theme, variant, increaseWidth, increaseHeight }}
+      {...{ variant, increaseWidth, increaseHeight }}
     />
   )
 }
