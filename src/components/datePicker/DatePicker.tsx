@@ -1,14 +1,22 @@
 import React, { useState } from 'react'
 import { DateTime } from 'luxon'
-import styled from 'styled-components'
-import { MonthDays, DayArguments } from './MothDays'
+import styled, { css } from 'styled-components'
+import { MonthDays, DayArguments } from './components/MothDays'
+import { VARIANT } from '../../theme'
 
-interface DatePickerProps {
-  date?: Date
+export interface DatePickerProps {
+  className?: string
+  variant: VARIANT
+  selected?: Date
+  fillEmptyDays?: boolean
   onChange?: ({ date }: { date: Date }) => void
 }
 
-const defaultDate = new Date()
+const defaultProps = {
+  variant: VARIANT.PRIMARY,
+  selected: new Date(),
+  fillEmptyDays: false,
+}
 
 const Wrapper = styled.div`
   width: 100%;
@@ -30,9 +38,23 @@ const IconButton = styled.button`
   margin: 0;
   background: none;
   border-color: transparent;
-  background: #eee;
   border-radius: 3px;
   box-sizing: border-box;
+  cursor: pointer;
+  opacity: 0.7;
+  transform: scale(0.9);
+
+  ${() => css`
+    &:hover {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.1s, transform 0.1s;
+    }
+    &:active {
+      transform: scale(0.8);
+      transition: transform 0.1s;
+    }
+  `};
 `
 
 const MonthTitle = styled.span`
@@ -43,9 +65,16 @@ const MonthTitle = styled.span`
 /**
  * Primary UI component for user interaction
  */
-export const DatePicker = ({ date = defaultDate, onChange, ...rest }: DatePickerProps) => {
-  const [luxonSelectedDay, setLuxonSelectedDay] = useState(DateTime.fromJSDate(date).startOf('day'))
-  const [luxonSelectedMonth, setLuxonSelectedMonth] = useState(DateTime.fromJSDate(date).startOf('day'))
+export const DatePicker = ({
+  className,
+  variant = defaultProps.variant,
+  selected = defaultProps.selected,
+  fillEmptyDays = defaultProps.fillEmptyDays,
+  onChange,
+  ...rest
+}: DatePickerProps) => {
+  const [luxonSelectedDay, setLuxonSelectedDay] = useState(DateTime.fromJSDate(selected).startOf('day'))
+  const [luxonSelectedMonth, setLuxonSelectedMonth] = useState(DateTime.fromJSDate(selected).startOf('day'))
 
   const handleClickNext = () => {
     const nextLuxonMonth = luxonSelectedMonth.plus({ months: 1 })
@@ -63,17 +92,18 @@ export const DatePicker = ({ date = defaultDate, onChange, ...rest }: DatePicker
   }
 
   return (
-    <Wrapper>
+    <Wrapper {...{ className }}>
       <Header>
         <IconButton onClick={handleClickBack}>{'<'}</IconButton>
         <MonthTitle>{luxonSelectedMonth.toFormat('MMMM y')}</MonthTitle>
         <IconButton onClick={handleClickNext}>{'>'}</IconButton>
       </Header>
       <MonthDays
-        month={luxonSelectedMonth.toJSDate()}
-        selected={luxonSelectedDay.toJSDate()}
+        {...{ variant }}
+        daySelected={luxonSelectedDay.toJSDate()}
+        monthSelected={luxonSelectedMonth.toJSDate()}
+        fillEmptyDays={fillEmptyDays}
         onChange={hanldeChange}
-        {...rest}
       />
     </Wrapper>
   )

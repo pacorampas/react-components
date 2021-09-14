@@ -1,12 +1,8 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { DateTime } from 'luxon'
-
-interface DayProps {
-  selected?: boolean
-  outOfMont?: boolean
-  tabIndex: string | number
-}
+import { Day } from './Day'
+import { VARIANT } from '../../../theme'
 
 export type DayArguments = {
   day: number
@@ -17,8 +13,10 @@ export type DayArguments = {
 }
 
 export interface MonthDaysProps {
-  selected?: Date
-  month?: Date
+  className?: string
+  variant?: VARIANT
+  daySelected?: Date
+  monthSelected?: Date
   fillEmptyDays?: boolean
   onChange?: (arg: DayArguments) => void
 }
@@ -27,39 +25,32 @@ const Wrapper = styled.div`
   width: 100%;
   box-sizing: border-box;
   border: solid 1px;
+
+  ${({ theme }) => css`
+    ${theme.components?.monthDays?.overrides}
+  `};
 `
 
 const Row = styled.div`
   display: flex;
 `
 
-const Day = styled.button.attrs(({ tabIndex = -1 }: DayProps) => {
-  return { tabIndex }
-})`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  flex: 1;
-  height: 30px;
-  box-sizing: border-box;
-  border-radius: 6px;
-  opacity: ${({ outOfMont }: DayProps) => (outOfMont ? '0.5' : '1')};
-  background: ${({ selected }: DayProps) => (selected ? '#eee' : 'none')};
-`
-
-const defaultDate = new Date()
+const defaultProps = {
+  variant: VARIANT.PRIMARY,
+  daySelected: new Date(),
+  fillEmtyDays: false,
+}
 
 export const MonthDays = ({
-  selected = defaultDate,
-  month,
-  fillEmptyDays = false,
+  className,
+  variant = defaultProps.variant,
+  daySelected = defaultProps.daySelected,
+  monthSelected,
+  fillEmptyDays = defaultProps.fillEmtyDays,
   onChange = undefined,
 }: MonthDaysProps) => {
-  const luxonDate = DateTime.fromJSDate(month || selected).startOf('day')
-  const luxonSelectedDate = DateTime.fromJSDate(selected).startOf('day')
+  const luxonDate = DateTime.fromJSDate(monthSelected || daySelected).startOf('day')
+  const luxonSelectedDate = DateTime.fromJSDate(daySelected).startOf('day')
   const firstDayOfMonth = luxonDate.set({ day: 1 })
   const lastDayOfMonth = luxonDate.set({ day: firstDayOfMonth.daysInMonth })
 
@@ -138,7 +129,7 @@ export const MonthDays = ({
   }
 
   return (
-    <Wrapper>
+    <Wrapper {...{ className }}>
       {Object.keys(rows).map((key: any) => {
         const row = rows[key]
         return (
@@ -152,9 +143,10 @@ export const MonthDays = ({
 
               return (
                 <Day
+                  {...{ variant }}
                   key={day.ts}
                   selected={luxonSelectedDate.toMillis() === DateTime.fromJSDate(day.date).startOf('day').toMillis()}
-                  outOfMont={day.prevMonth || day.nextMonth}
+                  outOfMonth={day.prevMonth || day.nextMonth}
                   onClick={handleDayClick.bind(day)}
                 >
                   {day.day}

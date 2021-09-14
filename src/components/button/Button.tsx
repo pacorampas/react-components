@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
+import { focusBackgroundPseudoStates } from '../../styledHelpers'
 import { themeProp, VARIANT } from '../../theme'
 import { IncreaseAnim, ANIM_STATUS } from '../increaseAnim/IncreaseAnim'
-import chroma from 'chroma-js'
 
 export interface ButtonProps {
   /**
@@ -37,33 +37,8 @@ const Wrapper = styled.button`
   cursor: pointer;
 
   ${({ theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps & themeProp) => {
-    const main = theme.colors[variant].main
-    const contrast = theme.colors[variant].contrast
-    const mainBrighten = chroma(main).brighten(0.4).hex()
-    const mainBrightest = chroma(main).brighten(0.6).hex()
-    const mainDarken = chroma(main).darken(0.5).hex()
-
     return css`
-      background: ${bordered ? 'transparent' : main};
-      color: ${bordered ? main : contrast};
-      border-color: ${main};
-
-      &:hover {
-        background: ${bordered ? 'transparent' : mainBrighten};
-        border-color: ${mainBrighten};
-        color: ${bordered ? mainBrighten : contrast};
-      }
-
-      &:active {
-        background: ${bordered ? 'transparent' : mainBrightest};
-        border-color: ${mainBrightest};
-        color: ${bordered ? mainBrightest : contrast};
-      }
-
-      &:focus {
-        border-color: ${mainDarken};
-      }
-
+      ${focusBackgroundPseudoStates({ theme, variant, bordered })}
       ${theme?.components?.button?.overrides}
     `
   }};
