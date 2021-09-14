@@ -1,0 +1,344 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Day /> with modifiers should render as out of month 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 0.5;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render no selected 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render selected 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: pink;
+  background: pink;
+  color: black;
+  border-color: pink;
+}
+
+.c0:hover {
+  background: #ffd4df;
+  border-color: #ffd4df;
+  color: black;
+}
+
+.c0:active {
+  background: #ffdee9;
+  border-color: #ffdee9;
+  color: black;
+}
+
+.c0:focus {
+  border-color: #e5a7b2;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render using info 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render using negative 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render using positive 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render using primary 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render using warning 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="-1"
+>
+  1
+</button>
+`;
+
+exports[`<Day /> with modifiers should render with tabindex 0 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  cursor: pointer;
+  opacity: 1;
+  background: transparent;
+}
+
+<button
+  class="c0"
+  tabindex="0"
+>
+  1
+</button>
+`;

@@ -6,7 +6,7 @@ import { VARIANT } from '../../theme'
 
 export interface DatePickerProps {
   className?: string
-  variant: VARIANT
+  variant?: VARIANT
   selected?: Date
   fillEmptyDays?: boolean
   onChange?: ({ date }: { date: Date }) => void
