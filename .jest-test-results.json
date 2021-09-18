@@ -2,13 +2,13 @@
   "numFailedTestSuites": 0,
   "numFailedTests": 0,
   "numPassedTestSuites": 2,
-  "numPassedTests": 10,
+  "numPassedTests": 22,
   "numPendingTestSuites": 0,
   "numPendingTests": 0,
   "numRuntimeErrorTestSuites": 0,
   "numTodoTests": 0,
   "numTotalTestSuites": 2,
-  "numTotalTests": 10,
+  "numTotalTests": 22,
   "openHandles": [],
   "snapshot": {
     "added": 0,
@@ -19,34 +19,16 @@
     "filesRemovedList": [],
     "filesUnmatched": 0,
     "filesUpdated": 0,
-    "matched": 7,
-    "total": 7,
+    "matched": 16,
+    "total": 16,
     "unchecked": 0,
     "uncheckedKeysByFile": [],
     "unmatched": 0,
     "updated": 0
   },
-  "startTime": 1631553805534,
+  "startTime": 1631638959827,
   "success": true,
   "testResults": [
-    {
-      "assertionResults": [
-        {
-          "ancestorTitles": ["<DatePicker />"],
-          "failureMessages": [],
-          "fullName": "<DatePicker /> should change the month title",
-          "location": null,
-          "status": "passed",
-          "title": "should change the month title"
-        }
-      ],
-      "endTime": 1631553818410,
-      "message": "",
-      "name": "/Users/manu/Workspace/personal/react-components/src/components/datePicker/DatePicker.test.tsx",
-      "startTime": 1631553806532,
-      "status": "passed",
-      "summary": ""
-    },
     {
       "assertionResults": [
         {
@@ -122,10 +104,124 @@
           "title": "trigger onClick prop when user clicks on the button"
         }
       ],
-      "endTime": 1631553819152,
+      "endTime": 1631638970058,
       "message": "",
-      "name": "/Users/manu/Workspace/personal/react-components/src/components/button/Button.test.tsx",
-      "startTime": 1631553806528,
+      "name": "/Users/farv/repos/components/src/components/button/Button.test.tsx",
+      "startTime": 1631638961130,
+      "status": "passed",
+      "summary": ""
+    },
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["<DatePicker />"],
+          "failureMessages": [],
+          "fullName": "<DatePicker /> should change the month title",
+          "location": null,
+          "status": "passed",
+          "title": "should change the month title"
+        },
+        {
+          "ancestorTitles": ["<DatePicker />"],
+          "failureMessages": [],
+          "fullName": "<DatePicker /> interaction",
+          "location": null,
+          "status": "passed",
+          "title": "interaction"
+        },
+        {
+          "ancestorTitles": ["<Day />"],
+          "failureMessages": [],
+          "fullName": "<Day /> renders correctly",
+          "location": null,
+          "status": "passed",
+          "title": "renders correctly"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render selected",
+          "location": null,
+          "status": "passed",
+          "title": "should render selected"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render no selected",
+          "location": null,
+          "status": "passed",
+          "title": "should render no selected"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render with tabindex 0",
+          "location": null,
+          "status": "passed",
+          "title": "should render with tabindex 0"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render as out of month",
+          "location": null,
+          "status": "passed",
+          "title": "should render as out of month"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render using primary",
+          "location": null,
+          "status": "passed",
+          "title": "should render using primary"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render using negative",
+          "location": null,
+          "status": "passed",
+          "title": "should render using negative"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render using positive",
+          "location": null,
+          "status": "passed",
+          "title": "should render using positive"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render using warning",
+          "location": null,
+          "status": "passed",
+          "title": "should render using warning"
+        },
+        {
+          "ancestorTitles": ["<Day />", "with modifiers"],
+          "failureMessages": [],
+          "fullName": "<Day /> with modifiers should render using info",
+          "location": null,
+          "status": "passed",
+          "title": "should render using info"
+        },
+        {
+          "ancestorTitles": ["<MonthDays />"],
+          "failureMessages": [],
+          "fullName": "<MonthDays /> renders correctly",
+          "location": null,
+          "status": "passed",
+          "title": "renders correctly"
+        }
+      ],
+      "endTime": 1631638977954,
+      "message": "",
+      "name": "/Users/farv/repos/components/src/components/datePicker/DatePicker.test.tsx",
+      "startTime": 1631638961099,
       "status": "passed",
       "summary": ""
     }
