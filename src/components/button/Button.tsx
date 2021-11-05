@@ -51,7 +51,12 @@ const Label = styled.span`
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ variant = defaultProps.variant, children, onClick, ...rest }: ButtonProps) => {
+export const Button = ({
+  variant = defaultProps.variant,
+  children,
+  onClick,
+  ...rest
+}: ButtonProps): React.ReactElement => {
   const [anim, setAnim] = useState(false)
 
   const handleClick = () => {

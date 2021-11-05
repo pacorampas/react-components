@@ -4,6 +4,7 @@ export enum VARIANT {
   POSITIVE = 'positive',
   WARNING = 'warning',
   INFO = 'info',
+  WHITE = 'white',
 }
 export type colorType = {
   main: string
@@ -48,6 +49,10 @@ export const defaultTheme: themeType = {
     [VARIANT.INFO]: {
       main: 'blue',
       contrast: 'white',
+    },
+    [VARIANT.WHITE]: {
+      main: '#fff',
+      contrast: '#333',
     },
   },
   components: {},
