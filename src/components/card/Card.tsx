@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { themeProp, VARIANT } from 'theme'
+import { themeProp, VARIANT } from '../../theme'
 
 export interface CardProps {
   /**
@@ -19,18 +19,14 @@ const defaultProps = {
 
 const Wrapper = styled.div`
   position: relative;
-  padding: 12px;
-  border-radius: 12px;
+  padding: ${({ theme }) => theme?.components?.card?.padding};
+  border-radius: ${({ theme }) => theme?.components?.card?.borderRadius};
 
-  /* ${({ theme, variant = defaultProps.variant }: CardProps & themeProp) => {
-    return css`
-      background-color: ${theme.colors[variant].main};
-    `
-  }}; */
+  ${({ theme, variant = defaultProps.variant }: CardProps & themeProp) => css`
+    background-color: ${theme.colors[variant].main};
+  `};
 `
 
-const Card = ({ variant, children }: CardProps): React.ReactElement => {
-  return <Wrapper {...{ variant }}>{children}</Wrapper>
-}
+const Card = ({ variant, children }: CardProps): React.ReactElement => <Wrapper {...{ variant }}>{children}</Wrapper>
 
 export default React.memo(Card)

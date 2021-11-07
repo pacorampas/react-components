@@ -36,12 +36,10 @@ const Wrapper = styled.button`
   padding: 8px 12px;
   cursor: pointer;
 
-  ${({ theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps & themeProp) => {
-    return css`
-      ${focusBackgroundPseudoStates({ theme, variant, bordered })}
-      ${theme?.components?.button?.overrides}
-    `
-  }};
+  ${({ theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps & themeProp) => css`
+    ${focusBackgroundPseudoStates({ theme, variant, bordered })}
+    ${theme?.components?.button?.overrides}
+  `};
 `
 
 const Label = styled.span`
@@ -73,7 +71,7 @@ export const Button = ({
       <>
         {anim && (
           <IncreaseAnim
-            variant={variant as any as VARIANT}
+            variant={variant as VARIANT}
             status={ANIM_STATUS.PLAY}
             increase={20}
             onStop={handleIncreaseAnimStop}
