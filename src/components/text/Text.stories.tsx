@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import TextComponent, { TextProps } from './Text'
+import { Text as TextComponent, TextProps } from './Text'
 import { VARIANT } from '../../theme'
 
 export default {

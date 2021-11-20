@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { themeProp, VARIANT } from '../../theme'
+import { ThemeProp, VARIANT } from '../../theme'
 
 export interface CardProps {
   /**
@@ -8,7 +8,7 @@ export interface CardProps {
    */
   variant?: VARIANT
   /**
-   * Button contents
+   * Card contents
    */
   children: JSX.Element | string
 }
@@ -22,11 +22,15 @@ const Wrapper = styled.div`
   padding: ${({ theme }) => theme?.components?.card?.padding};
   border-radius: ${({ theme }) => theme?.components?.card?.borderRadius};
 
-  ${({ theme, variant = defaultProps.variant }: CardProps & themeProp) => css`
+  ${({ theme, variant = defaultProps.variant }: CardProps & ThemeProp) => css`
     background-color: ${theme.colors[variant].main};
   `};
 `
 
-const Card = ({ variant, children }: CardProps): React.ReactElement => <Wrapper {...{ variant }}>{children}</Wrapper>
+const Card = React.memo(
+  ({ variant, children }: CardProps): React.ReactElement => <Wrapper {...{ variant }}>{children}</Wrapper>,
+)
 
-export default React.memo(Card)
+Card.displayName = 'Card'
+
+export { Card }

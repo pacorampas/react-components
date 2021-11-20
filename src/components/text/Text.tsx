@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { getMargins } from '../../styledHelpers'
-import { themeProp, VARIANT } from '../../theme'
+import { ThemeProp, VARIANT } from '../../theme'
 
 export enum TEXT_SIZES {
   xs = 'xs',
@@ -43,7 +43,7 @@ export enum TEXT_WEIGHT {
   'black' = 'black',
 }
 
-export interface TextProps {
+export interface TextProps extends ThemeProp {
   /**
    * Is this the principal call to action on the page?
    */
@@ -145,9 +145,9 @@ const DraftText = styled.p`
 
   color: transparent;
   user-select: none;
-  ${({ theme, size }: TextProps & themeProp) => css(theme.components.text.fontSizes[size])}
+  ${({ theme, size }: TextProps & ThemeProp) => css(theme.components.text.fontSizes[size])}
 
-  background-color: ${({ theme, variant }: TextProps & themeProp) => theme.colors[variant].main};
+  background-color: ${({ theme, variant }: TextProps & ThemeProp) => theme.colors[variant].main};
 
   &.line {
     margin-bottom: 20px;
@@ -165,7 +165,7 @@ const DraftText = styled.p`
 const StyledText = styled.p`
   margin: 0;
   padding: 0;
-  ${({ theme, margins, marginTop, marginRight, marginBottom, marginLeft }: TextProps & themeProp) =>
+  ${({ theme, margins, marginTop, marginRight, marginBottom, marginLeft }: TextProps & ThemeProp) =>
     getMargins({
       theme,
       margins,
@@ -175,9 +175,9 @@ const StyledText = styled.p`
       marginLeft,
     })}
 
-  color: ${({ theme, variant }: TextProps & themeProp) => theme.colors[variant].main};
+  color: ${({ theme, variant }: TextProps & ThemeProp) => theme.colors[variant].main};
   font-weight: ${({ weight }: TextProps) => getWeight(weight)};
-  ${({ theme, size }: TextProps & themeProp) => css(theme.components?.text?.fontSizes[size])}
+  ${({ theme, size }: TextProps & ThemeProp) => css(theme.components?.text?.fontSizes[size])}
   text-align: ${({ align }: TextProps) => align};
 
   ${({ bold }: TextProps) =>
@@ -201,18 +201,21 @@ const StyledText = styled.p`
     `}
 `
 
-const Text = ({ draftLines, draft, theme, ...rest }: TextProps & TextDraftProps & themeProp): React.ReactElement =>
-  draft ? (
-    <DraftLinesWrapper theme={theme} {...rest}>
-      {Array.from({ length: draftLines }, (_, i) => (
-        <DraftText as="span" className={i === draftLines - 1 ? 'line small' : 'line large'} theme={theme} {...rest}>
-          {`Draft ${i}`}
-        </DraftText>
-      ))}
-    </DraftLinesWrapper>
-  ) : (
-    <StyledText theme={theme} {...rest} />
-  )
+export const Text = ({ draftLines, draft, theme, ...rest }: TextProps & TextDraftProps): React.ReactElement => {
+  if (draft) {
+    return (
+      <DraftLinesWrapper theme={theme} {...rest}>
+        {Array.from({ length: draftLines }, (_, i) => (
+          <DraftText as="span" className={i === draftLines - 1 ? 'line small' : 'line large'} theme={theme} {...rest}>
+            {`Draft ${i}`}
+          </DraftText>
+        ))}
+      </DraftLinesWrapper>
+    )
+  }
+
+  return <StyledText theme={theme} {...rest} />
+}
 
 Text.defaultProps = {
   size: 'm',
@@ -226,5 +229,3 @@ Text.defaultProps = {
   draft: false,
   draftLines: 1,
 }
-
-export default React.memo(Text)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import c from 'classnames'
-import { themeProp, VARIANT } from '../../theme'
+import { ThemeProp, VARIANT } from '../../theme'
 
 export enum ANIM_STATUS {
   PLAY = 'play',
@@ -34,12 +34,13 @@ const defaultProps = {
   increase: 20,
 }
 
-const borderOutAnimation = ({ increaseWidth = defaultProps.increase, increaseHeight = defaultProps.increase }) => {
-  return keyframes`
+const borderOutAnimation = ({
+  increaseWidth = defaultProps.increase,
+  increaseHeight = defaultProps.increase,
+}) => keyframes`
     0% { transform: scale(1); opacity: 0.6; }
     100% { transform: ${`scale(${increaseWidth}, ${increaseHeight})`}; opacity: 0; }
   `
-}
 
 const Animatable = styled.div`
   position: absolute;
@@ -65,7 +66,7 @@ const Animatable = styled.div`
     `};
   }
 
-  ${({ theme, variant = defaultProps.variant }: IncreaseAnimProps & themeProp) => css`
+  ${({ theme, variant = defaultProps.variant }: IncreaseAnimProps & ThemeProp) => css`
     background: ${theme.colors[variant].main};
     ${theme?.components?.borderOutAnim?.overrides}
   `};
