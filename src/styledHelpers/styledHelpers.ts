@@ -3,7 +3,7 @@ import chroma from 'chroma-js'
 import { css, FlattenSimpleInterpolation } from 'styled-components'
 import { margin } from 'polished'
 import { Styles } from 'polished/lib/types/style'
-import { themeType, VARIANT } from '../theme'
+import { themeType, VARIANT } from '../theme/theme.types'
 
 export const focusBackgroundPseudoStates = ({
   theme,

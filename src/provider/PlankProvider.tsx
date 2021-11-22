@@ -1,7 +1,8 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { defaultTheme } from 'theme'
 // import Fonts from '../fonts/index'
-import { defaultTheme, ThemeProp } from '../theme'
+import { ThemeProp } from '../theme/theme.types'
 
 export interface PlankProviderProps {
   theme: ThemeProp

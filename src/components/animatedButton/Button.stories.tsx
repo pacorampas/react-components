@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story } from '@storybook/react'
 import { Button as ButtonComponent, ButtonProps } from './Button'
-import { VARIANT } from '../../theme'
+import { VARIANT } from '../../theme/theme.types'
 
 export default {
   title: 'Components/Button',

@@ -1,8 +1,9 @@
 import React, { FC, ReactElement } from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { ThemeProvider } from 'styled-components'
-import { themes } from '../theme'
+import { darkTheme } from '../theme'
 
+const themes = [darkTheme]
 const AllTheProviders: FC = ({ children }) => <ThemeProvider theme={themes[0]}>{children}</ThemeProvider>
 
 const customRender = (ui: ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>

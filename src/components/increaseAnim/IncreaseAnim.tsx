@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import c from 'classnames'
-import { ThemeProp, VARIANT } from '../../theme'
+import { ThemeProp, VARIANT } from '../../theme/theme.types'
 
 export enum ANIM_STATUS {
   PLAY = 'play',

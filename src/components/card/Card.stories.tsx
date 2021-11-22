@@ -1,7 +1,8 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Card as CardComponent, CardProps } from './Card'
-import { VARIANT } from '../../theme'
+import { Card as CardComponent } from './Card'
+import { VARIANT } from '../../theme/theme.types'
+import { CardProps } from './Card.types'
 
 export default {
   title: 'Components/Card',

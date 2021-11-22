@@ -4,3 +4,4 @@ export * from './components/input/Input'
 export * from './components/text/Text'
 
 export * from './provider/PlankProvider'
+export * from './theme'

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { ThemeProp, VARIANT } from '../../../theme'
+import { ThemeProp, VARIANT } from '../../../theme/theme.types'
 import { focusBackgroundPseudoStates } from '../../../styledHelpers'
 
 export interface DayProps {

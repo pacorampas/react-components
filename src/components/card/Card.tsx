@@ -1,17 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { ThemeProp, VARIANT } from '../../theme'
-
-export interface CardProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  variant?: VARIANT
-  /**
-   * Card contents
-   */
-  children: JSX.Element | string
-}
+import { VARIANT } from '../../theme/theme.types'
+import { CardProps } from './Card.types'
 
 const defaultProps = {
   variant: VARIANT.WHITE,
@@ -22,7 +12,7 @@ const Wrapper = styled.div`
   padding: ${({ theme }) => theme?.components?.card?.padding};
   border-radius: ${({ theme }) => theme?.components?.card?.borderRadius};
 
-  ${({ theme, variant = defaultProps.variant }: CardProps & ThemeProp) => css`
+  ${({ theme, variant = defaultProps.variant }: CardProps) => css`
     background-color: ${theme.colors[variant].main};
   `};
 `

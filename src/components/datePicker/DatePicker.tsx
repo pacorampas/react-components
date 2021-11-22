@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { DateTime } from 'luxon'
 import styled, { css } from 'styled-components'
 import { MonthDays, DayArguments } from './components/MothDays'
-import { VARIANT } from '../../theme'
+import { VARIANT } from '../../theme/theme.types'
 
 export interface DatePickerProps {
   className?: string

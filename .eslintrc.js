@@ -6,9 +6,7 @@ module.exports = {
   extends: ['plugin:react/recommended', 'airbnb', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
-    },
+    ecmaFeatures: { jsx: true },
     ecmaVersion: 13,
     sourceType: 'module',
   },
@@ -22,6 +20,11 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'max-len': ['error', { code: 120 }],
     'no-shadow': 'off',
+    'operator-linebreak': 'off',
+    'implicit-arrow-linebreak': 'off',
+    indent: 'off',
+    'object-curly-newline': 'off',
+    'import/prefer-default-export': 'off',
   },
   settings: {
     'import/resolver': {

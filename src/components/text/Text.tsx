@@ -1,101 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import { getMargins } from '../../styledHelpers'
-import { ThemeProp, VARIANT } from '../../theme'
-
-export enum TEXT_SIZES {
-  xs = 'xs',
-  s = 's',
-  sm = 'sm',
-  m = 'm',
-  ml = 'ml',
-  l = 'l',
-  xl = 'xl',
-  xxl = 'xxl',
-}
-
-export enum TEXT_ALIGN {
-  left = 'left',
-  center = 'center',
-  right = 'right',
-}
-
-export enum TEXT_TRASFORM {
-  capitalize = 'capitalize',
-  uppercase = 'uppercase',
-  lowercase = 'lowercase',
-  inherit = 'inherit',
-  unset = 'unset',
-}
-
-export enum TEXT_WEIGHT {
-  // '300' = '300',
-  'light' = 'light',
-  // '400' = '400',
-  'regular' = 'regular',
-  // '500' = '500',
-  'medium' = 'medium',
-  // '600' = '600',
-  'semibold' = 'semibold',
-  // '700' = '700',
-  'bold' = 'bold',
-  // '800' = '800',
-  'black' = 'black',
-}
-
-export interface TextProps extends ThemeProp {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  variant: VARIANT
-  /**
-   * Button contents
-   */
-  children: JSX.Element | string
-  /**
-   * Text size
-   */
-  size: TEXT_SIZES
-  /**
-   * Is text bold
-   */
-  bold: boolean
-  /**
-   * Text align
-   */
-  align: TEXT_ALIGN
-  /**
-   * Text transform
-   */
-  transform: TEXT_TRASFORM
-  /**
-   * Text ellipsis
-   */
-  truncate: boolean
-  /**
-   * Text weight
-   */
-  weight: TEXT_WEIGHT
-  /**
-   * Text margins
-   */
-  margins?: (number | string)[]
-  marginTop?: number | string
-  marginRight?: number | string
-  marginBottom?: number | string
-  marginLeft?: number | string
-}
-
-export interface TextDraftProps {
-  /**
-   * Is draft text
-   */
-  draft: boolean
-  /**
-   * Number of lines to render as draft text
-   */
-  draftLines: number
-}
+import { TextDraftProps, TextProps, TEXT_WEIGHT } from './Text.types'
 
 const getWeight = (weight: TEXT_WEIGHT) => {
   let res
@@ -145,9 +51,9 @@ const DraftText = styled.p`
 
   color: transparent;
   user-select: none;
-  ${({ theme, size }: TextProps & ThemeProp) => css(theme.components.text.fontSizes[size])}
+  ${({ theme, size }: TextProps) => css(theme.components.text.fontSizes[size])}
 
-  background-color: ${({ theme, variant }: TextProps & ThemeProp) => theme.colors[variant].main};
+  background-color: ${({ theme, variant }: TextProps) => theme.colors[variant].main};
 
   &.line {
     margin-bottom: 20px;
@@ -165,7 +71,7 @@ const DraftText = styled.p`
 const StyledText = styled.p`
   margin: 0;
   padding: 0;
-  ${({ theme, margins, marginTop, marginRight, marginBottom, marginLeft }: TextProps & ThemeProp) =>
+  ${({ theme, margins, marginTop, marginRight, marginBottom, marginLeft }: TextProps) =>
     getMargins({
       theme,
       margins,
@@ -175,9 +81,9 @@ const StyledText = styled.p`
       marginLeft,
     })}
 
-  color: ${({ theme, variant }: TextProps & ThemeProp) => theme.colors[variant].main};
+  color: ${({ theme, variant }: TextProps) => theme.colors[variant].main};
   font-weight: ${({ weight }: TextProps) => getWeight(weight)};
-  ${({ theme, size }: TextProps & ThemeProp) => css(theme.components?.text?.fontSizes[size])}
+  ${({ theme, size }: TextProps) => css(theme.components?.text?.fontSizes[size])}
   text-align: ${({ align }: TextProps) => align};
 
   ${({ bold }: TextProps) =>

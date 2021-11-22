@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 import { focusBackgroundPseudoStates } from '../../styledHelpers'
-import { ThemeProp, VARIANT } from '../../theme'
+import { ThemeProp, VARIANT } from '../../theme/theme.types'
 import { IncreaseAnim, ANIM_STATUS } from '../increaseAnim/IncreaseAnim'
 
 export interface ButtonProps {

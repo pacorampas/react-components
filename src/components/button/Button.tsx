@@ -1,30 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { ThemeProp, VARIANT } from '../../theme'
-
-export interface ButtonProps extends ThemeProp, React.HTMLAttributes<HTMLButtonElement> {
-  className?: string
-  /**
-   * The id of the `button` element.
-   */
-  id?: string
-  /**
-   * Is button disabled?
-   */
-  disabled?: boolean
-  /**
-   * Button children
-   */
-  children: React.ReactChild | string
-  /**
-   * Button variant
-   */
-  variant: VARIANT
-  /**
-   * Is button bordered?
-   */
-  bordered?: boolean
-}
+import { VARIANT } from '../../theme/theme.types'
+import { ButtonProps } from './Button.types'
 
 const StyledButton = styled.button<Partial<ButtonProps>>`
   position: relative;

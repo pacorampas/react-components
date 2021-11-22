@@ -1,6 +1,6 @@
 import React from 'react'
 import { render, fireEvent } from 'test-utils'
-import { VARIANT } from '../../theme'
+import { VARIANT } from '../../theme/theme.types'
 import 'jest-styled-components'
 import { DatePicker } from './DatePicker'
 import { Day } from './components/Day'
