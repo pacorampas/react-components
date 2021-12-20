@@ -1,6 +1,6 @@
 import { VARIANT, colorType, themeType } from '../theme.types'
 
-export const darkColors: { [key: string]: colorType } = {
+const darkColors: { [key: string]: colorType } = {
   [VARIANT.PRIMARY]: {
     main: '#5767ff',
     contrast: '#ffffff',
