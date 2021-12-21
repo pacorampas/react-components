@@ -1,6 +1,6 @@
-import { ThemeProp, VARIANT } from '../../theme/theme.types'
+import { VARIANT } from '../../theme/theme.types'
 
-export interface ButtonProps extends ThemeProp, React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   className?: string
   /**
    * The id of the `button` element.

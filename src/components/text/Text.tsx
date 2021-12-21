@@ -1,7 +1,8 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
+import { VARIANT } from 'theme/theme.types'
 import { getMargins } from '../../styledHelpers'
-import { TextDraftProps, TextProps, TEXT_WEIGHT } from './Text.types'
+import { TextDraftProps, TextProps, TEXT_ALIGN, TEXT_SIZES, TEXT_TRASFORM, TEXT_WEIGHT } from './Text.types'
 
 const getWeight = (weight: TEXT_WEIGHT) => {
   let res
@@ -36,12 +37,12 @@ const getWeight = (weight: TEXT_WEIGHT) => {
   return res
 }
 
-const DraftLinesWrapper = styled.p`
+const DraftLinesWrapper = styled.p<TextProps>`
   display: block;
   ${(props) => getMargins(props)}
 `
 
-const DraftText = styled.p`
+const DraftText = styled.span<Pick<TextProps, 'size' | 'variant'>>`
   display: block;
   width: 30%;
   max-width: 500px;
@@ -51,9 +52,9 @@ const DraftText = styled.p`
 
   color: transparent;
   user-select: none;
-  ${({ theme, size }: TextProps) => css(theme.components.text.fontSizes[size])}
+  ${({ theme, size }) => css(theme.components.text.fontSizes[size])}
 
-  background-color: ${({ theme, variant }: TextProps) => theme.colors[variant].main};
+  background-color: ${({ theme, variant }) => theme.colors[variant].main};
 
   &.line {
     margin-bottom: 20px;
@@ -68,10 +69,10 @@ const DraftText = styled.p`
   }
 `
 
-const StyledText = styled.p`
+const StyledText = styled.p<TextProps>`
   margin: 0;
   padding: 0;
-  ${({ theme, margins, marginTop, marginRight, marginBottom, marginLeft }: TextProps) =>
+  ${({ theme, margins, marginTop, marginRight, marginBottom, marginLeft }) =>
     getMargins({
       theme,
       margins,
@@ -81,20 +82,20 @@ const StyledText = styled.p`
       marginLeft,
     })}
 
-  color: ${({ theme, variant }: TextProps) => theme.colors[variant].main};
-  font-weight: ${({ weight }: TextProps) => getWeight(weight)};
-  ${({ theme, size }: TextProps) => css(theme.components?.text?.fontSizes[size])}
-  text-align: ${({ align }: TextProps) => align};
+  color: ${({ theme, variant }) => theme.colors[variant].main};
+  font-weight: ${({ weight }) => getWeight(weight)};
+  ${({ theme, size }) => css(theme.components?.text?.fontSizes[size])}
+  text-align: ${({ align }) => align};
 
-  ${({ bold }: TextProps) =>
+  ${({ bold }) =>
     bold &&
     css`
       font-weight: 700;
     `}
 
-  text-transform: ${({ transform }: TextProps) => transform};
+  text-transform: ${({ transform }) => transform};
 
-  ${({ truncate }: TextProps) =>
+  ${({ truncate }) =>
     truncate &&
     css`
       display: -webkit-box;
@@ -107,12 +108,12 @@ const StyledText = styled.p`
     `}
 `
 
-export const Text = ({ draftLines, draft, theme, ...rest }: TextProps & TextDraftProps): React.ReactElement => {
+export const Text = ({ draftLines, draft, ...rest }: TextProps & TextDraftProps): React.ReactElement => {
   if (draft) {
     return (
-      <DraftLinesWrapper theme={theme} {...rest}>
+      <DraftLinesWrapper {...rest}>
         {Array.from({ length: draftLines }, (_, i) => (
-          <DraftText as="span" className={i === draftLines - 1 ? 'line small' : 'line large'} theme={theme} {...rest}>
+          <DraftText className={i === draftLines - 1 ? 'line small' : 'line large'} {...rest}>
             {`Draft ${i}`}
           </DraftText>
         ))}
@@ -120,16 +121,17 @@ export const Text = ({ draftLines, draft, theme, ...rest }: TextProps & TextDraf
     )
   }
 
-  return <StyledText theme={theme} {...rest} />
+  return <StyledText {...rest} />
 }
 
 Text.defaultProps = {
-  size: 'm',
-  variant: 'neutralMax',
+  size: TEXT_SIZES.m,
+  align: TEXT_ALIGN.left,
+  variant: VARIANT.NTRL_LIGHT,
   bold: false,
   family: 'default',
-  weight: '400',
-  transform: 'unset',
+  weight: TEXT_WEIGHT.regular,
+  transform: TEXT_TRASFORM.unset,
   truncate: false,
   fontStyle: 'normal',
   draft: false,

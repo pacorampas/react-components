@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 import { VARIANT } from '../../theme/theme.types'
 import { ButtonProps } from './Button.types'
 
-const StyledButton = styled.button<Partial<ButtonProps>>`
+const StyledButton = styled.button<ButtonProps>`
   position: relative;
   font-family: 'Poppins';
   font-size: ${({ theme }) => theme.components.button.fontSize};
@@ -24,7 +24,7 @@ const StyledButton = styled.button<Partial<ButtonProps>>`
   ${({ theme, variant }) => {
     const { style, width, radius } = theme?.components?.button?.border ?? {}
 
-    return css`
+    return css<ButtonProps>`
       border-style: ${style};
       border-width: ${width};
       border-color: ${theme.colors[variant ?? VARIANT.PRIMARY]?.main};
@@ -34,12 +34,10 @@ const StyledButton = styled.button<Partial<ButtonProps>>`
       &:not([disabled]):focus,
       &:not([disabled]):active {
         box-shadow: ${() => `0 0 0 1px ${theme.colors[variant ?? VARIANT.PRIMARY]?.main}`};
-        opacity: ${({ theme, bordered }: Partial<ButtonProps>) =>
-          !bordered && `${theme?.components?.button?.activeOpacity}`};
-        background-color: ${({ theme, variant, bordered }: Partial<ButtonProps>) =>
+        opacity: ${({ theme, bordered }) => !bordered && `${theme?.components?.button?.activeOpacity}`};
+        background-color: ${({ theme, variant, bordered }) =>
           bordered && theme?.colors[variant ?? VARIANT.PRIMARY].main};
-        color: ${({ theme, variant, bordered }: Partial<ButtonProps>) =>
-          bordered && theme?.colors[variant ?? VARIANT.PRIMARY].contrast};
+        color: ${({ theme, variant, bordered }) => bordered && theme?.colors[variant ?? VARIANT.PRIMARY].contrast};
       }
     `
   }};

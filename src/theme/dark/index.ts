@@ -1,4 +1,5 @@
-import { VARIANT, colorType, themeType } from '../theme.types'
+import { DefaultTheme } from 'styled-components'
+import { VARIANT, colorType } from '../theme.types'
 
 const darkColors: { [key: string]: colorType } = {
   [VARIANT.PRIMARY]: {
@@ -47,7 +48,7 @@ const darkColors: { [key: string]: colorType } = {
   },
 }
 
-export const darkTheme: themeType = {
+export const darkTheme: DefaultTheme = {
   name: 'default',
   space: 1,
   colors: darkColors,
@@ -59,35 +60,35 @@ export const darkTheme: themeType = {
     text: {
       fontSizes: {
         xs: {
-          'font-size': '20px',
+          'font-size': '10px',
           'line-height': '1.2',
         },
         s: {
-          'font-size': '24px',
+          'font-size': '12px',
           'line-height': '1.33',
         },
         sm: {
-          'font-size': '28px',
+          'font-size': '14px',
           'line-height': '1.29',
         },
         m: {
-          'font-size': '40px',
+          'font-size': '16px',
           'line-height': '1.2',
         },
         ml: {
-          'font-size': '48px',
+          'font-size': '18px',
           'line-height': '1.25',
         },
         l: {
-          'font-size': '56px',
+          'font-size': '20px',
           'line-height': '1.29',
         },
         xl: {
-          'font-size': '68px',
+          'font-size': '24px',
           'line-height': '1.18',
         },
         xxl: {
-          'font-size': '80px',
+          'font-size': '30px',
           'line-height': '1.2',
         },
       },

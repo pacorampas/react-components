@@ -1,6 +1,6 @@
-import { ThemeProp } from '../../theme/theme.types'
+import React from 'react'
 
-export interface InputProps extends ThemeProp, React.HTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.HTMLAttributes<HTMLInputElement> {
   className?: string
   /**
    * The id of the `input` element.

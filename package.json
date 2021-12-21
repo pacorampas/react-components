@@ -78,5 +78,8 @@
   },
   "pre-commit": [
     "pre-commit"
+  ],
+  "files": [
+    "src/styled.d.ts"
   ]
 }

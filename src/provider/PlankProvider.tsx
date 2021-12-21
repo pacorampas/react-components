@@ -1,11 +1,10 @@
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
-import { defaultTheme } from 'theme'
+import { DefaultTheme, ThemeProvider } from 'styled-components'
+import { defaultTheme } from '../theme'
 // import Fonts from '../fonts/index'
-import { ThemeProp } from '../theme/theme.types'
 
 export interface PlankProviderProps {
-  theme: ThemeProp
+  theme: DefaultTheme
   children: React.ReactNode
 }
 

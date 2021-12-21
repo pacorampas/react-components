@@ -7,12 +7,12 @@ const defaultProps = {
   variant: VARIANT.WHITE,
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<CardProps>`
   position: relative;
   padding: ${({ theme }) => theme?.components?.card?.padding};
   border-radius: ${({ theme }) => theme?.components?.card?.borderRadius};
 
-  ${({ theme, variant = defaultProps.variant }: CardProps) => css`
+  ${({ theme, variant = defaultProps.variant }) => css`
     background-color: ${theme.colors[variant].main};
   `};
 `

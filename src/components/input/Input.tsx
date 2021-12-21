@@ -11,7 +11,7 @@ const Container = styled.div`
   flex-direction: column;
 `
 
-const Label = styled.label<Pick<InputProps, 'theme'>>`
+const Label = styled.label`
   font-family: 'Poppins';
   font-size: ${({ theme }) => theme.components.input.placeholder.fontSize};
   font-weight: ${({ theme }) => theme.components.input.placeholder.fontWeight};
@@ -67,7 +67,7 @@ const HelpTextWrapper = styled.div`
   justify-content: flex-end;
 `
 
-const HelpText = styled.p<Pick<InputProps, 'theme' | 'hasError'>>`
+const HelpText = styled.p<Pick<InputProps, 'hasError'>>`
   margin: 6px 0 0;
   font-family: 'OpenSans', 'Open Sans';
   font-size: ${({ theme }) => theme.components.input.helpText.fontSize};

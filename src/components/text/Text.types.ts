@@ -1,4 +1,4 @@
-import { VARIANT, ThemeProp } from '../../theme/theme.types'
+import { VARIANT } from '../../theme/theme.types'
 
 export enum TEXT_SIZES {
   xs = 'xs',
@@ -40,7 +40,7 @@ export enum TEXT_WEIGHT {
   'black' = 'black',
 }
 
-export interface TextProps extends ThemeProp {
+export interface TextProps {
   /**
    * Is this the principal call to action on the page?
    */
@@ -48,7 +48,7 @@ export interface TextProps extends ThemeProp {
   /**
    * Button contents
    */
-  children: JSX.Element | string
+  children: React.ReactNode | string | Element[]
   /**
    * Text size
    */

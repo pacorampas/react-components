@@ -1,6 +1,6 @@
-import { VARIANT, ThemeProp } from '../../theme/theme.types'
+import { VARIANT } from '../../theme/theme.types'
 
-export interface CardProps extends ThemeProp {
+export interface CardProps {
   /**
    * Is this the principal call to action on the page?
    */

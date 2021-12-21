@@ -22,6 +22,6 @@
       "test-utils": ["./utils/test-utils"]
     }
   },
-  "include": ["src"],
+  "include": ["src", "styled.d.ts"],
   "exclude": ["node_modules", "lib"]
 }

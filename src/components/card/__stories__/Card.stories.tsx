@@ -20,6 +20,6 @@ const Template = (args: CardProps) => <CardComponent {...args} />
 
 export const Card: Story<CardProps> = Template.bind({})
 Card.args = {
-  children: <p>I'm a parragraph</p>,
+  children: <p>I am a parragraph</p>,
   variant: VARIANT.PRIMARY,
 }
