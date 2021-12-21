@@ -1,7 +1,7 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Input as InputComponent } from './Input'
-import { InputProps } from './Input.types'
+import { Input as InputComponent } from '../Input'
+import { InputProps } from '../Input.types'
 
 export default {
   title: 'Components/Input',

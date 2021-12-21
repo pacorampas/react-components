@@ -1,7 +1,7 @@
-export * from './components/button/Button'
-export * from './components/card/Card'
-export * from './components/input/Input'
-export * from './components/text/Text'
+export * from './components/button'
+export * from './components/card'
+export * from './components/input'
+export * from './components/text'
 
 export * from './provider/PlankProvider'
 export * from './theme'

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { Text as TextComponent } from './Text'
-import { VARIANT } from '../../theme/theme.types'
-import { TextProps } from './Text.types'
+import { Text as TextComponent } from '../Text'
+import { VARIANT } from '../../../theme/theme.types'
+import { TextProps } from '../Text.types'
 
 export default {
   title: 'Components/Text',
