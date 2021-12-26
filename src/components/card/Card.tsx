@@ -18,7 +18,11 @@ const Wrapper = styled.div<CardProps>`
 `
 
 const Card = React.memo(
-  ({ variant, children }: CardProps): React.ReactElement => <Wrapper {...{ variant }}>{children}</Wrapper>,
+  ({ className, variant, children }: CardProps): React.ReactElement => (
+    <Wrapper className={className} {...{ variant }}>
+      {children}
+    </Wrapper>
+  ),
 )
 
 Card.displayName = 'Card'

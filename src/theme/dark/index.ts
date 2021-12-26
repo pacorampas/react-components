@@ -11,7 +11,7 @@ const darkColors: { [key: string]: colorType } = {
     contrast: '#ffffff',
   },
   [VARIANT.NEGATIVE]: {
-    main: 'red',
+    main: '#EA4D60',
     contrast: 'white',
   },
   [VARIANT.POSITIVE]: {

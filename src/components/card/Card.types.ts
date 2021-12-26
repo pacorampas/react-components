@@ -1,6 +1,7 @@
 import { VARIANT } from '../../theme/theme.types'
 
 export interface CardProps {
+  className?: string
   /**
    * Is this the principal call to action on the page?
    */
@@ -8,5 +9,5 @@ export interface CardProps {
   /**
    * Card contents
    */
-  children: JSX.Element | string
+  children: React.ReactNode
 }
