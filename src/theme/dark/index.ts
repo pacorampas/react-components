@@ -1,3 +1,4 @@
+import { transparentize } from 'polished'
 import { DefaultTheme } from 'styled-components'
 import { VARIANT, colorType } from '../theme.types'
 
@@ -45,6 +46,10 @@ const darkColors: { [key: string]: colorType } = {
   [VARIANT.NTRL_DARKEST]: {
     main: '#232d43',
     contrast: '#5767ff',
+  },
+  [VARIANT.TRANSPARENT]: {
+    main: 'transparent',
+    contrast: 'transparent',
   },
 }
 
@@ -127,6 +132,39 @@ export const darkTheme: DefaultTheme = {
       },
       activeOpacity: 0.7,
       disabledOpacity: 0.5,
+    },
+    buttonIcon: {
+      width: '36px',
+      height: '36px',
+      border: {
+        style: 'solid',
+        width: '1px',
+        radius: '12px',
+      },
+      hover: {
+        backgroundColor: transparentize(0.8, darkColors[VARIANT.NTRL_LIGHT].main),
+        opacity: 1,
+      },
+      disabledOpacity: 0.5,
+    },
+    table: {
+      border: {
+        style: 'solid',
+        width: '1px',
+        color: transparentize(0.8, darkColors[VARIANT.NTRL_LIGHT].main),
+        radius: '3px',
+      },
+      head: {
+        backgroundColor: transparentize(0.8, darkColors[VARIANT.NTRL_LIGHT].main),
+      },
+      cell: {
+        padding: '12px',
+        border: {
+          style: 'solid',
+          width: '1px',
+          color: transparentize(0.8, darkColors[VARIANT.NTRL_LIGHT].main),
+        },
+      },
     },
   },
 }

@@ -10,6 +10,7 @@ export enum VARIANT {
   NTRL_DARKEST = 'ntrl_darkest',
   WHITE = 'white',
   BLACK = 'black',
+  TRANSPARENT = 'transparent',
 }
 
 export type colorType = {
