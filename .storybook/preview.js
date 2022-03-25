@@ -2,7 +2,7 @@ import { withTests } from '@storybook/addon-jest'
 import { ThemeProvider } from 'styled-components'
 import { withThemesProvider } from 'storybook-addon-styled-component-theme'
 import { addDecorator } from '@storybook/react'
-import { themes } from '../src/theme'
+import { darkTheme } from '../src/theme'
 
 import results from '../.jest-test-results.json'
 
@@ -16,7 +16,7 @@ export const parameters = {
   },
 }
 
-addDecorator(withThemesProvider(themes), ThemeProvider)
+addDecorator(withThemesProvider([darkTheme]), ThemeProvider)
 
 export const decorators = [
   withTests({

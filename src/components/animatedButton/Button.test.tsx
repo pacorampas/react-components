@@ -2,7 +2,7 @@ import React from 'react'
 import { render, fireEvent } from 'test-utils'
 import 'jest-styled-components'
 import { Button } from './Button'
-import { VARIANT } from '../../theme'
+import { VARIANT } from '../../theme/theme.types'
 
 const renderButton = (props = {}) => {
   const { getByRole, ...rest } = render(<Button {...props}>Call to action</Button>)

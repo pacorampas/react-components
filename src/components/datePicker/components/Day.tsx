@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { themeProp, VARIANT } from '../../../theme'
+import { ThemeProp, VARIANT } from '../../../theme/theme.types'
 import { focusBackgroundPseudoStates } from '../../../styledHelpers'
 
 export interface DayProps {
@@ -18,9 +18,7 @@ const defaultProps = {
   tabIndex: -1,
 }
 
-export const Day = styled.button.attrs(({ tabIndex = defaultProps.tabIndex }: DayProps) => {
-  return { tabIndex }
-})`
+export const Day = styled.button.attrs(({ tabIndex = defaultProps.tabIndex }: DayProps) => ({ tabIndex }))`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +36,7 @@ export const Day = styled.button.attrs(({ tabIndex = defaultProps.tabIndex }: Da
     variant = defaultProps.variant,
     outOfMonth = defaultProps.outOfMonth,
     selected = defaultProps.selected,
-  }: DayProps & themeProp) => {
+  }: DayProps & ThemeProp) => {
     const colorSelected = theme.colors[variant].main
     return css`
       opacity: ${outOfMonth ? '0.5' : '1'};

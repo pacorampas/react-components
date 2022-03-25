@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import { DateTime } from 'luxon'
 import { Day } from './Day'
-import { VARIANT } from '../../../theme'
+import { VARIANT } from '../../../theme/theme.types'
 
 export type DayArguments = {
   day: number
@@ -105,7 +105,7 @@ export const MonthDays = ({
 
   const daysInRows = ({ daysToRender }: { daysToRender: any[] }) => {
     const rows: { [key: number]: any[] } = {}
-    let rowIndex: number = -1
+    let rowIndex = -1
     daysToRender.forEach((day, i) => {
       if (i % 7 === 0) {
         rowIndex += 1

@@ -1,81 +1,60 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled, { css } from 'styled-components'
-import { focusBackgroundPseudoStates } from '../../styledHelpers'
-import { themeProp, VARIANT } from '../../theme'
-import { IncreaseAnim, ANIM_STATUS } from '../increaseAnim/IncreaseAnim'
+import { VARIANT } from '../../theme/theme.types'
+import { ButtonProps } from './Button.types'
 
-export interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
-  variant?: VARIANT
-  /**
-   * Use a button without background
-   */
-  bordered?: boolean
-  /**
-   * Button contents
-   */
-  children: JSX.Element | string
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void
-}
-
-const defaultProps = {
-  variant: VARIANT.PRIMARY,
-  bordered: false,
-}
-
-const Wrapper = styled.button`
+const StyledButton = styled.button<ButtonProps>`
   position: relative;
-  outline: 0;
-  border: solid 2px transparent;
-  border-radius: 4px;
-  padding: 8px 12px;
+  font-family: 'Poppins';
+  font-size: ${({ theme }) => theme.components.button.fontSize};
+  background-color: ${({ theme, variant, bordered }) => {
+    const color = theme.colors[variant ?? VARIANT.PRIMARY]
+    return bordered ? 'transparent' : color.main
+  }};
+  color: ${({ theme, variant, bordered }) => {
+    const color = theme.colors[variant ?? VARIANT.PRIMARY]
+    return bordered ? color.main : color.contrast
+  }};
+  height: ${({ theme }) => theme.components.button.height};
+  padding: ${({ theme }) => theme.components.button.padding};
+  transition: all 0.3s ease;
   cursor: pointer;
+  user-select: none;
 
-  ${({ theme, variant = defaultProps.variant, bordered = defaultProps.bordered }: ButtonProps & themeProp) => {
-    return css`
-      ${focusBackgroundPseudoStates({ theme, variant, bordered })}
-      ${theme?.components?.button?.overrides}
+  ${({ theme, variant }) => {
+    const { style, width, radius } = theme?.components?.button?.border ?? {}
+
+    return css<ButtonProps>`
+      border-style: ${style};
+      border-width: ${width};
+      border-color: ${theme.colors[variant ?? VARIANT.PRIMARY]?.main};
+      border-radius: ${radius};
+
+      &:not([disabled]):hover,
+      &:not([disabled]):active {
+        box-shadow: ${() => `0 0 0 1px ${theme.colors[variant ?? VARIANT.PRIMARY]?.main}`};
+        opacity: ${({ theme, bordered }) => !bordered && `${theme?.components?.button?.activeOpacity}`};
+        background-color: ${({ theme, variant, bordered }) =>
+          bordered && theme?.colors[variant ?? VARIANT.PRIMARY].main};
+        color: ${({ theme, variant, bordered }) => bordered && theme?.colors[variant ?? VARIANT.PRIMARY].contrast};
+      }
     `
   }};
+
+  &:disabled {
+    cursor: auto;
+    opacity: ${({ theme }) => theme.components.button.disabledOpacity};
+  }
 `
 
-const Label = styled.span`
-  position: relative;
-`
+export const Button = ({ variant, bordered, children, ...rest }: ButtonProps): React.ReactElement => (
+  <StyledButton variant={variant} bordered={bordered} {...rest}>
+    {children}
+  </StyledButton>
+)
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({ variant = defaultProps.variant, children, onClick, ...rest }: ButtonProps) => {
-  const [anim, setAnim] = useState(false)
-
-  const handleClick = () => {
-    setAnim(true)
-    onClick?.()
-  }
-
-  const handleIncreaseAnimStop = () => {
-    setAnim(false)
-  }
-
-  return (
-    <Wrapper {...{ variant }} onClick={handleClick} {...rest}>
-      <>
-        {anim && (
-          <IncreaseAnim
-            variant={variant as any as VARIANT}
-            status={ANIM_STATUS.PLAY}
-            increase={20}
-            onStop={handleIncreaseAnimStop}
-          />
-        )}
-        <Label>{children}</Label>
-      </>
-    </Wrapper>
-  )
+Button.defaultProps = {
+  type: 'button',
+  disabled: false,
+  bordered: false,
 }

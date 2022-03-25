@@ -1,6 +1,6 @@
 import React from 'react'
 import { Story } from '@storybook/react'
-import { VARIANT } from '../../theme'
+import { VARIANT } from '../../theme/theme.types'
 import { IncreaseAnim, IncreaseAnimProps, ANIM_STATUS } from './IncreaseAnim'
 
 export default {

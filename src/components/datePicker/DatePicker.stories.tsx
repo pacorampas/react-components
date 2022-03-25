@@ -3,7 +3,7 @@ import { Story } from '@storybook/react'
 import { DatePicker as DatePickerComponent, DatePickerProps } from './DatePicker'
 import { MonthDays as MonthDaysComponent, MonthDaysProps, DayArguments } from './components/MothDays'
 import { Day as DayComponent, DayProps } from './components/Day'
-import { VARIANT } from '../../theme'
+import { VARIANT } from '../../theme/theme.types'
 
 export default {
   title: 'Components/DatePicker',
