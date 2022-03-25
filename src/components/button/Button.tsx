@@ -31,7 +31,6 @@ const StyledButton = styled.button<ButtonProps>`
       border-radius: ${radius};
 
       &:not([disabled]):hover,
-      &:not([disabled]):focus,
       &:not([disabled]):active {
         box-shadow: ${() => `0 0 0 1px ${theme.colors[variant ?? VARIANT.PRIMARY]?.main}`};
         opacity: ${({ theme, bordered }) => !bordered && `${theme?.components?.button?.activeOpacity}`};

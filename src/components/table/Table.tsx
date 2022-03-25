@@ -221,21 +221,23 @@ const TablePagination = ({
   )
 }
 
-const IconWrapper = styled.span<Pick<TableSortLabelProps, 'isActive' | 'direction'>>`
+const IconWrapper = styled.span<Pick<TableSortLabelProps, 'isActive' | 'direction' | 'align'>>`
   transition: opacity 0.3s ease, transform 0.3s ease;
   opacity: ${({ isActive }) => (isActive ? 1 : 0)};
-  margin-right: 6px;
+  margin-right: ${({ align }) => (align === 'left' ? 0 : '6px')};
+  margin-left: ${({ align }) => (align === 'left' ? '6px' : 0)};
   height: 18px;
   transform: ${({ direction }) => `scaleY(${direction === 'asc' ? -1 : 1})`};
 `
 
-const SortLabel = styled.button`
+const SortLabel = styled.button<Pick<TableSortLabelProps, 'align'>>`
   border: 0;
   outline: none;
   user-select: none;
   background: transparent;
   transition: opacity 0.3s ease;
   display: flex;
+  flex-direction: ${({ align }) => (align === 'right' ? 'row' : 'row-reverse')};
   align-items: center;
   margin: 0;
   padding: 0;
@@ -254,6 +256,7 @@ const TableSortLabel = ({
   className,
   isActive,
   direction,
+  align,
   onClick,
   children,
 }: TableSortLabelProps): React.ReactElement => {
@@ -268,8 +271,8 @@ const TableSortLabel = ({
   }, [isActive, direction])
 
   return (
-    <SortLabel className={className} onClick={handleClick}>
-      <IconWrapper isActive={isActive} direction={direction}>
+    <SortLabel className={className} align={align} onClick={handleClick}>
+      <IconWrapper isActive={isActive} direction={direction} align={align}>
         <RiSortDesc size="18px" color={theme?.colors[VARIANT.NTRL_LIGHT]?.main} />
       </IconWrapper>
 
@@ -281,6 +284,7 @@ const TableSortLabel = ({
 TableSortLabel.defaultProps = {
   isActive: false,
   direction: 'asc',
+  align: 'left',
 }
 
 export { Table, TableHead, TableBody, TableRow, TableCell, TablePagination, TableSortLabel }

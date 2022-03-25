@@ -54,6 +54,8 @@ export interface TableSortLabelProps {
   className?: string
   /** Is the sort column active */
   isActive: boolean
+  /** Content alignment used to place the sort icon */
+  align: 'left' | 'right'
   /** What is the sort direction (asc or desc) */
   direction: 'asc' | 'desc'
   /** Handle label click */
